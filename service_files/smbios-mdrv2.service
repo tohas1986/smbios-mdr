@@ -1,0 +1,13 @@
+[Unit]
+Description=Intel BMC SMBIOS MDR V2
+After=xyz.openbmc_project.EntityManager.service
+
+[Service]
+Restart=always
+RestartSec=5
+StartLimitBurst=10
+ExecStartPre=/bin/mkdir -p /var/lib/smbios
+ExecStart=/usr/bin/smbiosmdrv2app
+
+[Install]
+WantedBy=multi-user.target
